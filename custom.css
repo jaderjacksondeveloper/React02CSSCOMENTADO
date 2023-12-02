@@ -1,0 +1,387 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap');
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;    /*Não permite apresentar nenhuma decoração, tipo sublinhado etc... no projeto inteiro*/ 
+}
+
+
+
+
+/*criação de variavel global*/
+:root{
+--main-color:#0a1234;
+--site-color:#fff;
+--active-color:#23408a;
+--first-color:#0f1a36;
+--second-color:#182041;
+--third-color: #1b2021;
+}
+/*Fim da criação da variavel global*/
+
+body{
+    background-color:var(--main-color);
+    color: var(--site-color);
+   
+}
+.max-width{
+    max-width: 1300px; /*Largura Maxima da Tela*/
+    padding: 0 10px; /* Zero na parte superior e inferior, 10px na lateral direita e esquerda*/
+    margin: auto; /*A configuração auto deixa centralizado o conteudo*/
+}
+
+ /*INICIO DO MENU*/
+
+.navbar .logo a{ /*acessando a tag letra: a, que esta dentro do seletor: logo, que por sua vez esta no seletor: navbar */
+color: var(--active-color);
+font-size: 35px; /*Tamanho da fonte*/
+font-weight: 500; /*Expessura da fonte*/
+
+}
+
+.navbar .max-width{/*acessando o seletor: max-width que é a largura maxima que esta dentro do seletor: navbar*/
+display: flex;    /*Todo o conteudo fica em uma unica linha*/
+align-items: center;  /*Alinhando no centro o conteúdo*/
+justify-content: space-between;  /*Coloca espaçoes entre os elementos*/
+}
+
+.navbar{/*Personalizando a navbar*/
+    position: fixed; /*a posição do elemento vai ficar fixa na parte superior*/
+    width: 100%; /*A largura deve ocupar 100% do espaco disponivel*/
+    z-index: 999;
+/* O z-index é uma propriedade do CSS que controla a sobreposição de elementos em um documento HTML. 
+Ela especifica a ordem de empilhamento dos elementos ao longo do eixo Z (profundidade),
+determinando qual elemento será exibido acima dos outros. Quanto maior o valor do z-index,
+maior a prioridade do elemento na pilha e, portanto, mais próximo ele estará da "superfície" da página.
+Por exemplo, se um elemento A tem um z-index de 2 e está sobreposto a um elemento B com z-index de 1,
+o elemento A será exibido acima do elemento B, mesmo que o elemento A apareça posteriormente no código HTML.
+A propriedade z-index só tem efeito em elementos que têm uma posição de posicionamento (position) 
+diferente de static (por exemplo, relative, absolute, ou fixed). Ela não afeta elementos com position: static. */
+  
+    padding: 20px 0; /*vai ocupar 20px na parte superior e inferior e 0 nas laterais*/
+    font-family: 'ubunto', sans-serif; /*Utilizando a fonte do www.fontawesome.com*/
+    background-color: var(--main-color); /*Cor de fundo usando a variável*/
+    border-bottom: solid var(--third-color) 1px;/*Inclui uma borda somente na parte inferior, ou seja vai aparecer uma linha abaixo da navbar*/
+
+}
+#menu-icon.active::before/*o active vai verificar através do togglo, se existe remove, senão, repoe*/
+{ 
+content: "\f00d "; /*"\f00d " esse simbolo representa o x de fechar do menu sanduiche, esse codigo foi tirado do site fontawesome.com*/
+}
+
+.navbar .menu li{  /*Acessando a tag li, que esta dentro do coletor: menu, que por sua vez esta dentro do seletor: navbar*/
+   list-style: none; /*Não apresenta mais como listas, ou seja, remove os marcadores*/
+   display: inline-block; /*Coloca o conteudo ( Home, Sobre escola, Contato) em uma única linha*/
+}
+.navbar .menu li a{  /*Acessando a tag li, que esta dentro do coletor: menu, que por sua vez esta dentro do seletor: navbar*/
+    display: block;  /*Não apresenta mais como listas, ou seja, remove os marcadores*/
+    color: var(--site-color);
+    list-style: none;
+    font-size: 18px; /*Tamanho da fonte*/
+    font-weight: 400; /*Espessura da fonte*/
+    margin-left: 25px ; /*Margem em relação a lateral esquerda*/
+}
+
+
+.menu-btn{ /*Icone sanduiche*/
+    color: var(--site-color); /*Cor do icone sanduiche*/
+    font-size: 23px; /*Tamanho da fonte*/
+    cursor:pointer; /*Mostra o efeito clik do mouse no icone sanduiche*/
+  display: none;
+
+}
+
+/*INICIO DA Configuração para deixar o projeto responsivo*/
+
+@media (max-width: 947px)/* Largura do dispositivo do usuario*/
+ {
+    .menu-btn{  /* O icone sanduiche só vai aparecer na tela quando o dispositivo tiver tela menor que 999*/
+        display: block;
+        z-index: 999;
+    }
+    .navbar .menu{
+        background-color: var(--main-color);
+        position: fixed;  /* Quando o site for aberto em dispositivo movel ele abrira com a maioria das informações centralizadas*/
+        height: 100vh; /* Abrindo com 100% da altura do dispositivo*/
+        width: 100%; /* Abrindo com 100% da largura do dispositivo*/
+        left: -100%;
+        top: 0%;
+        text-align: center; /* Texto alinhado no centro*/
+        padding: 80px; 
+        transition: all 0.3s ease; /* essa configuração da um efeito de transição mais lenta no menu sanduiche*/
+    }
+    #menu-site.active{/* só vai apresentar quando estiver ativo, essa funçao esta ligado ao java script*/
+        left: 0;
+    }
+    .navbar .menu li{
+        display: block;
+    }
+    .navbar .menu li a{
+        display: inline-block;
+        margin: 13px 0; /*Espaçamento entre linhas, Margem na inferior e superior, zero na lateral esquerda e direita*/
+        font-size: 25px;
+
+    
+    }
+}
+
+ /*FIM DO MENU*/
+
+/*FIM da Configuração para deixar o projeto responsivo*/
+
+ /*inicio do topo*/
+
+section{
+    padding: 50px 0; /*50px na parte superior e inferior e 0 nos lados*/
+
+}
+
+@media(max-width:690px){ /*lagura maxima dos dispositovos referente ao top do site*/
+    section{
+        padding: 20px 0;/* 20px na parte superior e inferior e 0 nos lados*/
+    }
+
+}
+
+.top{ /* Configuração da imagem de plano de fundo*/
+    color: var(--site-color);
+    display: flex;
+    /* vc pode descomentar a linha a baixo de deixa o background sem efeito gradiente, em seguida comente a linha 151*/
+   /* background: url("/image/2f9cdf878ac7ef4.jpg") no-repeat center; /*50 no-repeat evita que a imagem seja repetida e o center centraliza a imagem*/
+  
+   /* a configuração do background abaixo coloca a imagem da esqueda para direita em efeito gradiente*/
+   background: linear-gradient(to right, var(--main-color)25%, rgba(255,255,255,0)),url("/image/2f9cdf878ac7ef4.jpg") no-repeat center;
+    
+    height: 100vh;/* essa configuração garante que a imagem ocupe 100% da altura*/
+    min-height: 500px; /* essa configuração garante que a imagem ocupe a altura minina de 500px*/
+    background-size: cover ;/* essa configuração define o tamanho da imagem de fundo, cover cobre o tamanho do container inteiro*/
+    background-attachment: fixed; /* essa configuração determina se a imagem é fixa ou se vai rolar com o conteudo*/
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.top .max-width{ /* seletor responsavel pela largura maxima*/
+    width: 100%;
+    display: flex;
+}
+
+.top .top-content .text-1{
+    font-size: 25px;
+
+}
+.top .top-content .text-2{
+    font-size: 55px;
+    font-weight: 400px;
+    margin-left: -3px; /* margem lateral esquerda*/
+
+}
+
+.top .top-content .text-3{
+    font-size: 32px;
+    margin-left: 5px 0;
+}
+
+.top .top-content a{ /* Configuração do botão*/
+
+    display: inline-block;
+    background:var(--active-color);
+    color: var(--site-color);
+    font-size: 25px;
+    padding: 12px 36px;
+    margin-top: 20px ;/* para afastar o botão um pouco do texto*/
+    font-weight: 300px;
+    border-radius: 6px ; /* Aredondando a borda do botão*/
+    border: 2px solid var(--active-color); /* sobreamento da borda*/
+    transition: all 0.3s ease; /* velocidade da transição para o botão, essa con*/
+
+}
+
+.top .top-content a:hover{ /* Efeito para quando passar o mouse encima do teclado*/
+    color: var(--active-color);
+    background: none; /* para não paresentar nada*/
+ }
+
+ /*FIM DO TOPO*/
+
+  /*INICIO SERVIÇO*/
+
+ .services{
+    color: var(--site-color);
+    background-color: var(--main-color);
+    font-family: 'Poppins',sans-serif;
+    margin: 60px;
+
+ }
+
+ .services .title{
+    text-align: center; /* Centralizar o texto*/
+    margin: 40px 0;
+    font-weight: 400;
+    font-size: 35px; /* tamanho da fonte*/
+ }
+
+ .services .serv-content{ /*Configurando os cards*/ 
+    /* para não aoresentar nada*/
+    display: flex; /* Coloca os tres campos ( Wifi celoz, espaço inspirador, reunioes) em uma unica linha*/
+   /* flex-wrap: wrap; */
+    align-items: center;
+    justify-content: space-between; /* para colocar espaços entre os elementos*/ 
+
+ }
+
+.services .serv-content .card:hover{
+background: var(--active-color);
+
+
+
+}
+
+
+
+
+ .services .serv-content .card{ /*Configurando os cards*/ 
+    width: calc(33% - 20);
+    background: var(--first-color);
+    text-align: center; /*Alinhando texto no centro*/ 
+    border-radius: 6px;
+    padding: 50px 25px;
+    cursor: pointer; /*Essa configuração transformar o pulsor do mouse na opção de clikar*/ 
+    transition: all 3s; /*Velocida da transição do card*/ 
+ }
+
+ .services .serv-content .card i{ /*Personalizando o icone*/
+    font-size: 50px;
+    color: var(--active-color);
+    }
+
+.services .serv-content .card:hover i {
+    color: var(--site-color);
+    transition: all 0.3s;
+}
+.services .serv-content .card .box{
+transition: all 0.3s ease;
+
+}
+
+.services .serv-content .card:hover .box{
+transform: scale(1.05); /*Configuração para aproximar o elemento qundo é passado o mouse*/
+
+
+
+}
+
+    .serv-content .serv-content .card .text-1
+    {
+        font-size: 25px; /*Tamando da fonte do card*/
+        font-weight: 500; /*Espessura da fonte*/
+        margin: 10px 0 7px 0;
+
+    }
+
+@media (max-width: 947px) /*se a tela visualizada for maior do que 947px, referente a largura*/ 
+{
+.services .serv-content .card{
+    width: calc(50% - 10px);
+    margin-bottom: 20px;
+}
+}
+
+@media (max-width: 690px){ /*esse responsivo não esta funcionando, pois os cards devem ficar um abaixo don outro apos a redução de tela*/ 
+.services .serv-content .card{
+    width: 100%;
+}
+}
+
+
+
+ /*FIM SERVIÇO*/
+
+  /*INICIO DO SERVIÇO PREMIUM*/
+
+.premium{
+    color: var(--site-color);
+    background: var(--first-color);
+    font-family: 'Poppins', sans-serif;
+}
+
+.premium  .title{
+    text-align: center;
+    margin: 50px 0;
+    font-weight: 400px;  /*Expessura da Fonte*/
+    font-size: 35px;
+    }
+
+    .premium .premium-content{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between; /*Espaço entre os elementos*/
+    }
+.premium .premium-content .left {
+    width: 45%;  /*Vai ocupar 45% da lateral Esquerda*/
+}
+
+.premium .premium-content .left img{
+    width: 400px ; /*Largura*/
+    height: 400px;
+    object-fit: cover;
+    border-radius: 6px ;  /*Para arrendondar a borda da Imagem*/
+
+}
+
+.premium .premium-content .right{
+    width: 55%;  /*Vai ocupar 55% da lateral Direita*/
+}
+.premium .premium-content .right .text{
+    font-size: 25px;
+    font-weight: 400;
+    margin-bottom: 10px;
+
+}
+
+.premium .premium-content .right p{
+    text-align: justify;   /*Texto Justificado*/
+
+}
+.premium .premium-content .right a{  /*Configuração do Botao CONTATO*/
+   display: inline-block;
+   background-color: var(--active-color);
+   color: var(--site-color);
+   font-size: 20px;
+   font-weight: 500;
+   padding: 10px 30px;
+   margin-top: 20px;
+   border-radius: 6px;
+   border: 2px solid var(--active-color);
+   transition: all 0.3s ease;  /*Velocidade da transição do mouse*/
+
+}
+.premium .premium-content .right a:hover{
+    color: var(--active-color);
+    background: none;  /*Não apresentar a cor de fundo quando passar o mouse*/
+ 
+}
+@media (max-width:1104px){  /*Configuração para dispositivos moveis*/
+    /*Quando a resolução for maio que 1104px executara as linha abaixo*/
+.premium .premium-content .left img{
+    width: 350px; /*Largura*/
+    height: 350px; /*Altura*/
+  }
+}
+
+@media (max-width: 947px) { /*Quando a tela do dispositivo for no maximo 947px, executara as linhas abaixo*/
+    .premium .premium-content .column {
+        width: 100%;
+        }
+        .premium .premium-content .left{
+            display: flex;
+            justify-content: center;
+            margin: 0 auto 60px; 
+        }
+
+}
+
+  /*FIM DO SERVIÇO PREMIUM*/
